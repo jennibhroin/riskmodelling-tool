@@ -4,6 +4,18 @@ Advanced Expected Credit Loss (ECL) calculation system compliant with IFRS 9 acc
 
 ## 🚀 Getting Started
 
+### 🌐 View Sample Results in Browser (Instant!)
+
+**See what the system produces - no installation needed:**
+
+👉 **[Open Interactive ECL Report](ecl_report.html)** *(download and open in any browser)*
+
+This sample report shows:
+- Portfolio ECL summary: $113,983 total
+- Multi-scenario analysis (5 economic scenarios)
+- Stage breakdown (Stage 1/2/3)
+- Sector distribution with interactive charts
+
 ### Run in Google Colab (No Installation Required!)
 
 Click the badge below to open and run in Google Colab:
