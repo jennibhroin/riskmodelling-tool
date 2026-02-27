@@ -2,6 +2,40 @@
 
 Advanced Expected Credit Loss (ECL) calculation system compliant with IFRS 9 accounting standards. Features full staging logic, multi-scenario analysis, stress testing, and comprehensive reporting.
 
+## 🚀 Getting Started from GitHub
+
+### Clone and Run
+
+```bash
+# Clone the repository
+git clone https://github.com/jennibhroin/riskmodelling-tool.git
+cd riskmodelling-tool
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run example calculation
+python examples/basic_ecl_calculation.py
+
+# Run multi-scenario analysis
+python examples/scenario_analysis.py
+```
+
+### Quick Test
+
+```python
+python3 << EOF
+from data_management.portfolio_loader import PortfolioLoader
+from core.ecl_engine import ECLCalculationEngine
+
+items = PortfolioLoader.load_from_csv('examples/sample_portfolio.csv')
+engine = ECLCalculationEngine()
+results = engine.calculate_portfolio_ecl(items)
+print(f"Total ECL: \${results.total_ecl:,.2f}")
+print(f"Coverage Ratio: {results.coverage_ratio:.2%}")
+EOF
+```
+
 ## Features
 
 - **IFRS 9 Compliance**: Full staging framework (Stage 1/2/3) with SICR detection
@@ -14,17 +48,41 @@ Advanced Expected Credit Loss (ECL) calculation system compliant with IFRS 9 acc
 - **Flexible Configuration**: YAML-based configuration for all parameters
 - **Production-Ready**: Extensive logging, error handling, and validation
 
-## Installation
+### Use with Your Own Data
 
-### From source
+```python
+from data_management.portfolio_loader import PortfolioLoader
+from core.ecl_engine import ECLCalculationEngine
+from scenarios.scenario_manager import ScenarioManager
 
-```bash
-cd ifrs9_ecl_system
-pip install -r requirements.txt
-pip install -e .
+# Load your portfolio
+items = PortfolioLoader.load_from_csv('your_portfolio.csv')
+
+# Calculate ECL with multiple scenarios
+scenario_mgr = ScenarioManager()
+scenario_mgr.load_from_config('config/scenarios_config.yaml')
+
+engine = ECLCalculationEngine()
+results = {}
+for scenario in scenario_mgr.list_scenarios():
+    results[scenario.name] = engine.calculate_portfolio_ecl(items, scenario)
+
+# Get probability-weighted ECL
+weighted_ecl = scenario_mgr.calculate_weighted_ecl(results)
+print(f"Probability-Weighted ECL: ${weighted_ecl:,.2f}")
 ```
 
-### Development installation
+## Installation
+
+### From GitHub
+
+```bash
+git clone https://github.com/jennibhroin/riskmodelling-tool.git
+cd riskmodelling-tool
+pip install -r requirements.txt
+```
+
+### Development Installation
 
 ```bash
 pip install -e ".[dev]"
