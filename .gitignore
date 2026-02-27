@@ -145,3 +145,6 @@ results/
 # Keep example files
 !examples/*.csv
 !examples/*.xlsx
+
+# Keep browser report
+!ecl_report.html
