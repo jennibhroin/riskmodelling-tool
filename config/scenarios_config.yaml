@@ -1,0 +1,105 @@
+scenarios:
+  base:
+    name: base
+    scenario_type: base
+    probability: 0.50
+    description: Base economic scenario with moderate growth
+
+    macro_adjustments:
+      gdp_growth: 0.0
+      unemployment_rate: 0.0
+      interest_rate: 0.0
+      credit_spreads: 0.0
+      house_price_index: 0.0
+      stock_market_index: 0.0
+
+    pd_multiplier: 1.0
+    lgd_multiplier: 1.0
+    ead_multiplier: 1.0
+    lgd_downturn_factor: 1.0
+    cure_rate_adjustment: 0.0
+    projection_horizon_months: 60
+
+  optimistic:
+    name: optimistic
+    scenario_type: optimistic
+    probability: 0.25
+    description: Upside scenario with strong economic growth
+
+    macro_adjustments:
+      gdp_growth: 1.5  # +1.5 percentage points
+      unemployment_rate: -1.0  # -1.0 percentage points
+      interest_rate: 25  # +25 basis points
+      credit_spreads: -50  # -50 basis points (tighter spreads)
+      house_price_index: 5.0  # +5% house prices
+      stock_market_index: 10.0  # +10% stock market
+
+    pd_multiplier: 0.85  # 15% reduction in base PD
+    lgd_multiplier: 0.90  # 10% reduction in base LGD
+    ead_multiplier: 0.95  # 5% reduction in EAD (lower drawdowns)
+    lgd_downturn_factor: 1.0  # No downturn adjustment
+    cure_rate_adjustment: 0.10  # 10% increase in cure rates
+    projection_horizon_months: 60
+
+  pessimistic:
+    name: pessimistic
+    scenario_type: pessimistic
+    probability: 0.25
+    description: Downside scenario with economic contraction
+
+    macro_adjustments:
+      gdp_growth: -2.0  # -2.0 percentage points
+      unemployment_rate: 2.0  # +2.0 percentage points
+      interest_rate: -50  # -50 basis points (rate cuts)
+      credit_spreads: 100  # +100 basis points (wider spreads)
+      house_price_index: -10.0  # -10% house prices
+      stock_market_index: -15.0  # -15% stock market
+
+    pd_multiplier: 1.30  # 30% increase in base PD
+    lgd_multiplier: 1.20  # 20% increase in base LGD
+    ead_multiplier: 1.10  # 10% increase in EAD (higher drawdowns)
+    lgd_downturn_factor: 1.25  # 25% downturn adjustment
+    cure_rate_adjustment: -0.15  # 15% reduction in cure rates
+    projection_horizon_months: 60
+
+  stress_recession:
+    name: stress_recession
+    scenario_type: stress
+    probability: 0.0  # Not used in probability-weighted ECL
+    description: Severe recession stress scenario
+
+    macro_adjustments:
+      gdp_growth: -4.0  # -4.0 percentage points (deep recession)
+      unemployment_rate: 4.0  # +4.0 percentage points
+      interest_rate: -100  # -100 basis points
+      credit_spreads: 250  # +250 basis points
+      house_price_index: -20.0  # -20% house prices
+      stock_market_index: -30.0  # -30% stock market
+
+    pd_multiplier: 1.80  # 80% increase in base PD
+    lgd_multiplier: 1.50  # 50% increase in base LGD
+    ead_multiplier: 1.20  # 20% increase in EAD
+    lgd_downturn_factor: 1.50  # 50% downturn adjustment
+    cure_rate_adjustment: -0.30  # 30% reduction in cure rates
+    projection_horizon_months: 60
+
+  stress_market_shock:
+    name: stress_market_shock
+    scenario_type: stress
+    probability: 0.0
+    description: Severe market downturn with liquidity crisis
+
+    macro_adjustments:
+      gdp_growth: -3.0
+      unemployment_rate: 3.0
+      interest_rate: 100  # +100 basis points (liquidity crisis)
+      credit_spreads: 400  # +400 basis points
+      house_price_index: -15.0
+      stock_market_index: -40.0  # Market crash
+
+    pd_multiplier: 1.60
+    lgd_multiplier: 1.40
+    ead_multiplier: 1.25  # Credit lines drawn heavily
+    lgd_downturn_factor: 1.40
+    cure_rate_adjustment: -0.25
+    projection_horizon_months: 60
