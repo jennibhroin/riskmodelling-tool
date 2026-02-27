@@ -2,9 +2,22 @@
 
 Advanced Expected Credit Loss (ECL) calculation system compliant with IFRS 9 accounting standards. Features full staging logic, multi-scenario analysis, stress testing, and comprehensive reporting.
 
-## 🚀 Getting Started from GitHub
+## 🚀 Getting Started
 
-### Clone and Run
+### Run in Google Colab (No Installation Required!)
+
+Click the badge below to open and run in Google Colab:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jennibhroin/riskmodelling-tool/blob/main/IFRS9_ECL_Colab.ipynb)
+
+**Features in Colab:**
+- ✅ No local installation needed
+- ✅ Run ECL calculations in your browser
+- ✅ Upload your own portfolio data
+- ✅ Download results to Excel
+- ✅ Interactive visualizations
+
+### Clone and Run Locally
 
 ```bash
 # Clone the repository
